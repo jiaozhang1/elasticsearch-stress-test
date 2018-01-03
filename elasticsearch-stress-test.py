@@ -102,6 +102,9 @@ def increment_success():
         # Increment counter
         success_bulks += 1
 
+        if success_bulks % 10 == 0:
+            print 'insert {}'.format(BULK_SIZE * success_bulks)
+            
     finally:  # Just in case
         # Release the lock
         success_lock.release()
