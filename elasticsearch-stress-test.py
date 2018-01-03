@@ -183,7 +183,8 @@ def fill_documents(documents_templates):
 
         # Populate the fields
         for field in temp_doc:
-            temp_doc[field] = generate_random_string(MAX_SIZE_PER_FIELD)
+            #temp_doc[field] = generate_random_string(MAX_SIZE_PER_FIELD)
+            temp_doc[field] = ''.join(choice(string.ascii_lowercase) for _ in range(randint(200, MAX_SIZE_PER_FIELD)))
 
         documents.append(temp_doc)
 
@@ -349,6 +350,7 @@ def main():
         print("Creating indices.. ")
 
         indices = generate_indices(es)
+        print "index is {}".format(indices)
         all_indices.extend(indices)
 
         try:
